@@ -1,0 +1,833 @@
+﻿@font-face {
+    font-family: bluehighwaybd;
+    src: url('bluehighwaybd.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Matiz;
+    src: url('Matiz.ttf') format('truetype');
+}
+
+@mixin svganimation($name, $time, $travel, $direction) {
+    -moz-animation: $name $time $travel $direction;
+    -o-animation: $name $time $travel $direction;
+    -webkit-animation: $name $time $travel $direction;
+    animation: $name $time $travel $direction;
+}
+
+.fancy {
+    line-height: 1;
+    text-align: center;
+    overflow: hidden;
+    padding: 10px;
+
+    span {
+        display: inline-block;
+        position: relative;
+    }
+
+    span:before,
+    span:after {
+        content: "";
+        position: absolute;
+        height: 10px;
+        border-bottom: 3px solid black;
+        /*border-top: 1px solid black;*/
+        top: 0;
+        width: 600px;
+    }
+
+    span:before {
+        right: 100%;
+        margin-right: 15px;
+    }
+
+    span:after {
+        left: 100%;
+        margin-left: 15px;
+    }
+}
+.fancy-white {
+    line-height: 1;
+    text-align: center;
+    overflow: hidden;
+    padding: 10px;
+
+    span {
+        display: inline-block;
+        position: relative;
+    }
+
+    span:before,
+    span:after {
+        content: "";
+        position: absolute;
+        height: 10px;
+        border-bottom: 3px solid #fbfbfb;
+        /*border-top: 1px solid black;*/
+        top: 0;
+        width: 600px;
+    }
+
+    span:before {
+        right: 100%;
+        margin-right: 15px;
+    }
+
+    span:after {
+        left: 100%;
+        margin-left: 15px;
+    }
+}
+
+
+
+
+
+
+
+html {
+    background: url(img/background.jpg) no-repeat center center fixed;
+    font-family: Matiz;
+    font-family: bluehighwaybd;
+}
+
+body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    color: #fbfbfb;
+}
+
+h2 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 0;
+    text-transform:capitalize;
+}
+
+.fullabsolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.relative {
+    position: relative;
+}
+
+.container {
+    position: relative;
+    margin: 30px;
+}
+
+.bg {
+    position: fixed;
+    @extend .fullabsolute;
+    z-index: -1;
+    background: url(img/background.jpg) no-repeat center center fixed;
+    background-size: cover;
+
+    &:after {
+        content: "";
+        @extend .fullabsolute;
+        background: rgba(0, 0, 0, 0.25);
+        transition: all 1s;
+    }
+}
+
+.slide-on {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    margin-top: 200px;
+
+    .stripe {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        margin-bottom: 100px;
+        font-size: 0;
+        background: black;
+        left: 101%;
+        transition: all 1s;
+        transition-delay: 0s;
+
+        &.big {
+            height: 100%;
+
+            .gallery {
+                width: 100%;
+                margin: auto;
+                text-align: center;
+
+                img {
+                    width: 23%;
+                    min-width: 400px;
+                    padding: 30px 1%;
+                }
+            }
+        }
+
+        div {
+            display: inline-block;
+            vertical-align: top;
+            height: 100%;
+            font-size: 16px;
+            z-index: 4;
+            position: relative;
+        }
+
+        .project-logo {
+            width: 100px;
+        }
+
+        .project-image {
+            height: 300px;
+            width: calc(100% - 400px);
+            transition: all 1s;
+
+
+            a {
+                @extend .fullabsolute
+            }
+        }
+
+        .project-text {
+            width: 300px;
+            max-width: calc(100% - 100px);
+            color: white;
+
+            .padding {
+                padding: 20px;
+            }
+        }
+
+        h3, h4, p {
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 30px;
+        }
+
+        h4 {
+            font-size: 20px;
+            border-bottom: 3px solid white;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .hiddencontent {
+            position: relative;
+            width: 100%;
+            height: calc(0% + 300px);
+            background: rgb(208, 198, 175);
+            top: -300px;
+            z-index: 3;
+            transition: all 2s;
+            transition-delay: 1s;
+            overflow: hidden;
+            opacity: 0;
+
+            .padding {
+                display: block;
+                padding: 30px;
+                max-width: 1200px;
+                margin: auto;
+            }
+
+            img.imgsmall {
+                width: 500px;
+                max-width: 100%;
+                padding: 50px;
+            }
+
+            img.imgleft {
+                float: left;
+                padding-left: 0;
+            }
+
+            img.imgright {
+                float: right;
+                padding-right: 0;
+            }
+
+            h3 {
+                font-size: 40px;
+                text-align: center;
+            }
+
+            p {
+                margin-top: 50px;
+            }
+        }
+
+        &.open {
+            height: 100%;
+            width: 90%;
+            margin: auto;
+            margin-bottom: 100px;
+
+            .project-image {
+                width: 100%;
+            }
+
+            .project-logo, .project-text {
+                display: none;
+            }
+
+            .hiddencontent {
+                top: 0;
+                height: calc(100% + 0px);
+                opacity: 1;
+
+                h4 {
+                    border-bottom: none;
+                }
+            }
+        }
+
+        &.close {
+            height: 0;
+            margin-bottom: 0;
+            opacity: 0;
+            transition: all 0s;
+            transition-delay: 0s;
+        }
+
+
+        &.egy {
+            .project-logo {
+                background: url(img/projects/egy/logo.jpg) no-repeat center center;
+                background-size: contain;
+            }
+
+            .project-image {
+                background: url(img/projects/egy/3d/Cafe.jpg) no-repeat center center;
+                background-size: 100%;
+
+                &:hover {
+                    background-size: 120%;
+                }
+            }
+        }
+
+        &.miss60 {
+            .project-logo {
+                background: url(img/projects/miss60/m60-logo.png) no-repeat center center;
+                background-size: contain;
+            }
+
+            .project-image {
+                background: url(img/projects/miss60/boards/Visual4.jpg) no-repeat center center;
+                background-size: 100%;
+
+                &:hover {
+                    background-size: 120%;
+                }
+            }
+        }
+
+        &.future {
+            .project-logo {
+                background: white;
+                background: url(img/projects/miss60/m60-logo.png) no-repeat center center;
+                background-size: contain;
+            }
+
+            .project-image {
+                background: white;
+                background: url(img/projects/future/futureplan.jpg) no-repeat center center;
+                background-size: 100%;
+
+                &:hover {
+                    background-size: 120%;
+                }
+            }
+        }
+    }
+}
+
+
+.hider {
+    opacity: 0;
+    transition-delay: 1s;
+}
+
+
+.about .hider {
+    opacity: 1;
+    transition-delay: 1s;
+}
+
+
+.aboutpage {
+    position: absolute;
+    top: calc(100% + 0px);
+    left: 0;
+    right: 0;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    color:black;
+    transition: all 1s;
+    transition-delay: 0s;
+
+    h2{color:black;}
+    .padding {
+        padding: 20px;
+    }
+
+    .se-container {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        padding-top: 150px;
+    }
+
+    .se-slope:nth-child(odd) {
+        background: #000;
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+        transform: rotate(5deg);
+        margin-top: -200px;
+        box-shadow: 0px -1px 3px rgba(0,0,0,0.4);
+    }
+
+    .se-slope {
+        margin: 0 -50px;
+        -webkit-transform-origin: left center;
+        -moz-transform-origin: left center;
+        -o-transform-origin: left center;
+        -ms-transform-origin: left center;
+        transform-origin: left center;
+    }
+}
+
+.logo-out {
+    position: fixed;
+    top: calc(50% - 200px);
+    left: 50%;
+    height: 400px;
+    width: 400px;
+    color: white;
+    z-index: 9;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+    transition-delay: 1s;
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -384px;
+        width: calc(100% + 368px);
+        height: calc(100% - 38px);
+        background: black;
+        z-index: -1;
+        opacity: 0;
+        transition: all .4s;
+        transition-delay: 0s;
+    }
+
+    .logo {
+        position: relative;
+        /* top: -50%; */
+        left: -50%;
+        height: 400px;
+        width: 400px;
+        fill: white;
+        color: white;
+        overflow: visible;
+        -moz-transition: all 1s;
+        -o-transition: all 1s;
+        -webkit-transition: all 1s;
+        transition: all 1s;
+        transition-delay: 1s;
+
+        .logo-in {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: visible;
+
+
+            .leftbracket, .rightbracket {
+                transform: translate(0);
+                -moz-transition: all 1s;
+                -o-transition: all 1s;
+                -webkit-transition: all 1s;
+                transition: all 1s;
+                transition-delay: 0s;
+            }
+
+            .top, .bot {
+                transform: translateY(0mpx);
+            }
+
+            .R-curl, .D-curl {
+                transition-delay: 0s;
+                transition: all 1s;
+            }
+        }
+
+        .contactcard {
+            opacity: 0;
+            position: absolute;
+            width: 192%;
+            height: 90%;
+            left: -46%;
+            transition: all .3s;
+            transition-delay: 0s;
+
+            .padding {
+                padding: 20px;
+            }
+
+            h2, h3 {
+                position: initial;
+                margin: auto;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 40px;
+            }
+
+            h3 {
+                font-size: 30px;
+            }
+
+            .contactinfo {
+                position: absolute;
+                right: 50px;
+                bottom: 50px;
+                font-size: 20px;
+            }
+
+            .contactpic {
+                position: absolute;
+                left: 50px;
+                bottom: 50px;
+                width: 200px;
+                height: 200px;
+            }
+        }
+    }
+
+    h3 {
+        position: absolute;
+        left: 0;
+        margin: 0;
+        bottom: 0;
+        font-size: 25px;
+        transition: all 1s;
+        transition-delay: 1s;
+    }
+}
+
+.menu {
+    position: fixed;
+    right: 30px;
+    top: 30px;
+    display: inline-block;
+    margin: 0;
+    margin-left: 190px;
+    padding:0;
+    list-style-type: none;
+    text-transform: uppercase;
+    font-size: 30px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    z-index: 9;
+
+    li {
+        display: inline;
+        -moz-transition: all 2s;
+        -o-transition: all 2s;
+        -webkit-transition: all 2s;
+        transition: all 2s;
+        border-left: 5px solid white;
+        padding-left: 10px;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+
+.selectedmenu {
+    text-decoration: underline;
+}
+
+.home {
+    .menu li a.home {
+        @extend .selectedmenu
+    }
+}
+
+.portfolio {
+    .menu li a.portfolio {
+        @extend .selectedmenu
+    }
+}
+
+.graphic-design {
+    .menu li a.graphic-design {
+        @extend .selectedmenu
+    }
+}
+
+.photography {
+    .menu li a.photography {
+        @extend .selectedmenu
+    }
+}
+
+.life-drawing {
+    .menu li a.life-drawing {
+        @extend .selectedmenu
+    }
+}
+
+.about {
+    .menu li a.about {
+        @extend .selectedmenu
+    }
+}
+
+.contact {
+    .menu li a.contact {
+        @extend .selectedmenu
+    }
+}
+
+.portfolio {
+    .bg:after {
+        background: rgba(0, 0, 0, 0.75);
+    }
+
+    .logo-out {
+        width: 150px;
+        height: 150px;
+        top: 30px;
+        left: 30px;
+        transition-delay: 0s;
+
+        h3 {
+            left: 0;
+            font-size: 10px;
+            transition-delay: 0s;
+        }
+
+        .logo {
+            top: 0;
+            left: 0;
+            height: 150px;
+            width: 150px;
+            transition-delay: 0s;
+        }
+    }
+
+    .portfoliopage.slide-on {
+        .stripe {
+            left: 0%;
+            transition-delay: 1s;
+        }
+    }
+}
+
+.photography .photographypage.slide-on {
+    .stripe {
+        left: 0%;
+        transition-delay: 1s;
+    }
+}
+
+.graphic-design .graphic-designpage.slide-on {
+    .stripe {
+        left: 0%;
+        transition-delay: 1s;
+    }
+}
+
+.life-drawing .life-drawingpage.slide-on {
+    .stripe {
+        left: 0%;
+        transition-delay: 1s;
+    }
+}
+
+.photography, .graphic-design, .life-drawing {
+    .bg:after {
+        background: rgba(0, 0, 0, 0.75);
+    }
+
+    .logo-out {
+        width: 150px;
+        height: 150px;
+        top: 30px;
+        left: 30px;
+        transition-delay: 0s;
+
+        h3 {
+            left: 0;
+            font-size: 10px;
+            transition-delay: 0s;
+        }
+
+        .logo {
+            top: 0;
+            left: 0;
+            height: 150px;
+            width: 150px;
+            transition-delay: 0s;
+        }
+    }
+}
+
+.about {
+
+    .aboutpage {
+        top: calc(0% + 200px);
+        transition: all 2s;
+        transition-delay: 1s;
+    }
+
+    .logo-out {
+        width: 150px;
+        height: 150px;
+        top: 30px;
+        left: 30px;
+        transition-delay: 0s;
+
+        h3 {
+            left: 0;
+            font-size: 10px;
+            transition-delay: 0s;
+        }
+
+        .logo {
+            top: 0;
+            left: 0;
+            height: 150px;
+            width: 150px;
+            transition-delay: 0s;
+        }
+    }
+}
+
+.contact {
+    .logo-out {
+        &:after {
+            opacity: .8;
+            transition: all 2s;
+            transition-delay: 1s;
+        }
+
+        .logo {
+            .leftbracket, .rightbracket {
+                transition-delay: .8s;
+            }
+
+            .leftbracket {
+                transform: translate(-1000px);
+            }
+
+            .rightbracket {
+                transform: translate(1000px);
+            }
+
+            .R-curl, .D-curl {
+                opacity: 0;
+                transition-delay: 2s;
+                transition: all 1s;
+            }
+
+            .contactcard {
+                opacity: 1;
+                transition: all 1s;
+                transition-delay: 2s;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width : 780px) {
+    .menu {
+        font-size: 25px;
+    }
+
+    .logo-out {
+        top: calc(50% - 75px);
+        width: 400px;
+        height: 400px;
+
+        .logo {
+            width: 400px;
+            height: 400px;
+        }
+    }
+
+    .portfoliopage .stripe {
+        height: 300px;
+        margin-bottom: 50px;
+    }
+
+    .contact .logo-out {
+        top: calc(00% + 190px);
+        width: 400px;
+        height: 400px;
+
+        .logo {
+            .rightbracket {
+                transform: translate(0px);
+            }
+
+            .leftbracket {
+                transform: translate(0px);
+            }
+
+            .top {
+                transform: translateY(-00px);
+            }
+
+            .bot {
+                transform: translateY(00px);
+            }
+
+            .contactcard {
+                width: 100%;
+                left: 0;
+
+                .contactpic {
+                    left: 100px;
+                    opacity: 0.3;
+                }
+            }
+        }
+
+        &:after {
+            top: calc(100% - 400px);
+            left: calc(100% - 600px);
+            width: calc(100%);
+            height: calc(100%);
+        }
+    }
+}

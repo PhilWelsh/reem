@@ -11,27 +11,46 @@
   text-align: center;
   overflow: hidden;
   padding: 10px; }
+  .fancy span {
+    display: inline-block;
+    position: relative; }
+  .fancy span:before, .fancy span:after {
+    content: "";
+    position: absolute;
+    height: 10px;
+    border-bottom: 3px solid black;
+    /*border-top: 1px solid black;*/
+    top: 0;
+    width: 600px; }
+  .fancy span:before {
+    right: 100%;
+    margin-right: 15px; }
+  .fancy span:after {
+    left: 100%;
+    margin-left: 15px; }
 
-.fancy span {
-  display: inline-block;
-  position: relative; }
-
-.fancy span:before, .fancy span:after {
-  content: "";
-  position: absolute;
-  height: 10px;
-  border-bottom: 3px solid black;
-  /*border-top: 1px solid black;*/
-  top: 0;
-  width: 600px; }
-
-.fancy span:before {
-  right: 100%;
-  margin-right: 15px; }
-
-.fancy span:after {
-  left: 100%;
-  margin-left: 15px; }
+.fancy-white {
+  line-height: 1;
+  text-align: center;
+  overflow: hidden;
+  padding: 10px; }
+  .fancy-white span {
+    display: inline-block;
+    position: relative; }
+  .fancy-white span:before, .fancy-white span:after {
+    content: "";
+    position: absolute;
+    height: 10px;
+    border-bottom: 3px solid #fbfbfb;
+    /*border-top: 1px solid black;*/
+    top: 0;
+    width: 600px; }
+  .fancy-white span:before {
+    right: 100%;
+    margin-right: 15px; }
+  .fancy-white span:after {
+    left: 100%;
+    margin-left: 15px; }
 
 html {
   background: url(img/background.jpg) no-repeat center center fixed;
@@ -42,14 +61,24 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  margin: 0; }
+  margin: 0;
+  color: #fbfbfb; }
 
-.fullabsolute, .bg, .bg:after, .portfoliopage .stripe .project-image a {
+h2 {
+  color: white;
+  font-size: 36px;
+  margin-bottom: 0;
+  text-transform: capitalize; }
+
+.fullabsolute, .bg, .bg:after, .slide-on .stripe .project-image a {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%; }
+
+.relative {
+  position: relative; }
 
 .container {
   position: relative;
@@ -65,12 +94,12 @@ body {
     background: rgba(0, 0, 0, 0.25);
     transition: all 1s; }
 
-.portfoliopage {
+.slide-on {
   overflow: hidden;
   position: absolute;
   width: 100%;
   margin-top: 200px; }
-  .portfoliopage .stripe {
+  .slide-on .stripe {
     position: relative;
     width: 100%;
     height: 300px;
@@ -80,37 +109,47 @@ body {
     left: 101%;
     transition: all 1s;
     transition-delay: 0s; }
-    .portfoliopage .stripe div {
+    .slide-on .stripe.big {
+      height: 100%; }
+      .slide-on .stripe.big .gallery {
+        width: 100%;
+        margin: auto;
+        text-align: center; }
+        .slide-on .stripe.big .gallery img {
+          width: 23%;
+          min-width: 400px;
+          padding: 30px 1%; }
+    .slide-on .stripe div {
       display: inline-block;
       vertical-align: top;
       height: 100%;
       font-size: 16px;
       z-index: 4;
       position: relative; }
-    .portfoliopage .stripe .project-logo {
+    .slide-on .stripe .project-logo {
       width: 100px; }
-    .portfoliopage .stripe .project-image {
+    .slide-on .stripe .project-image {
       height: 300px;
       width: calc(100% - 400px);
       transition: all 1s; }
-    .portfoliopage .stripe .project-text {
+    .slide-on .stripe .project-text {
       width: 300px;
       max-width: calc(100% - 100px);
       color: white; }
-      .portfoliopage .stripe .project-text .padding {
+      .slide-on .stripe .project-text .padding {
         padding: 20px; }
-    .portfoliopage .stripe h3, .portfoliopage .stripe h4, .portfoliopage .stripe p {
+    .slide-on .stripe h3, .slide-on .stripe h4, .slide-on .stripe p {
       margin: 0; }
-    .portfoliopage .stripe h3 {
+    .slide-on .stripe h3 {
       font-size: 30px; }
-    .portfoliopage .stripe h4 {
+    .slide-on .stripe h4 {
       font-size: 20px;
       border-bottom: 3px solid white;
       padding-bottom: 5px; }
-    .portfoliopage .stripe p {
+    .slide-on .stripe p {
       font-size: 18px;
       margin-top: 20px; }
-    .portfoliopage .stripe .hiddencontent {
+    .slide-on .stripe .hiddencontent {
       position: relative;
       width: 100%;
       height: calc(0% + 300px);
@@ -121,72 +160,72 @@ body {
       transition-delay: 1s;
       overflow: hidden;
       opacity: 0; }
-      .portfoliopage .stripe .hiddencontent .padding {
+      .slide-on .stripe .hiddencontent .padding {
         display: block;
         padding: 30px;
         max-width: 1200px;
         margin: auto; }
-      .portfoliopage .stripe .hiddencontent img.imgsmall {
+      .slide-on .stripe .hiddencontent img.imgsmall {
         width: 500px;
         max-width: 100%;
         padding: 50px; }
-      .portfoliopage .stripe .hiddencontent img.imgleft {
+      .slide-on .stripe .hiddencontent img.imgleft {
         float: left;
         padding-left: 0; }
-      .portfoliopage .stripe .hiddencontent img.imgright {
+      .slide-on .stripe .hiddencontent img.imgright {
         float: right;
         padding-right: 0; }
-      .portfoliopage .stripe .hiddencontent h3 {
+      .slide-on .stripe .hiddencontent h3 {
         font-size: 40px;
         text-align: center; }
-      .portfoliopage .stripe .hiddencontent p {
+      .slide-on .stripe .hiddencontent p {
         margin-top: 50px; }
-    .portfoliopage .stripe.open {
+    .slide-on .stripe.open {
       height: 100%;
       width: 90%;
       margin: auto;
       margin-bottom: 100px; }
-      .portfoliopage .stripe.open .project-image {
+      .slide-on .stripe.open .project-image {
         width: 100%; }
-      .portfoliopage .stripe.open .project-logo, .portfoliopage .stripe.open .project-text {
+      .slide-on .stripe.open .project-logo, .slide-on .stripe.open .project-text {
         display: none; }
-      .portfoliopage .stripe.open .hiddencontent {
+      .slide-on .stripe.open .hiddencontent {
         top: 0;
         height: calc(100% + 0px);
         opacity: 1; }
-        .portfoliopage .stripe.open .hiddencontent h4 {
+        .slide-on .stripe.open .hiddencontent h4 {
           border-bottom: none; }
-    .portfoliopage .stripe.close {
+    .slide-on .stripe.close {
       height: 0;
       margin-bottom: 0;
       opacity: 0;
       transition: all 0s;
       transition-delay: 0s; }
-    .portfoliopage .stripe.egy .project-logo {
+    .slide-on .stripe.egy .project-logo {
       background: url(img/projects/egy/logo.jpg) no-repeat center center;
       background-size: contain; }
-    .portfoliopage .stripe.egy .project-image {
+    .slide-on .stripe.egy .project-image {
       background: url(img/projects/egy/3d/Cafe.jpg) no-repeat center center;
       background-size: 100%; }
-      .portfoliopage .stripe.egy .project-image:hover {
+      .slide-on .stripe.egy .project-image:hover {
         background-size: 120%; }
-    .portfoliopage .stripe.miss60 .project-logo {
+    .slide-on .stripe.miss60 .project-logo {
       background: url(img/projects/miss60/m60-logo.png) no-repeat center center;
       background-size: contain; }
-    .portfoliopage .stripe.miss60 .project-image {
+    .slide-on .stripe.miss60 .project-image {
       background: url(img/projects/miss60/boards/Visual4.jpg) no-repeat center center;
       background-size: 100%; }
-      .portfoliopage .stripe.miss60 .project-image:hover {
+      .slide-on .stripe.miss60 .project-image:hover {
         background-size: 120%; }
-    .portfoliopage .stripe.future .project-logo {
+    .slide-on .stripe.future .project-logo {
       background: white;
       background: url(img/projects/miss60/m60-logo.png) no-repeat center center;
       background-size: contain; }
-    .portfoliopage .stripe.future .project-image {
+    .slide-on .stripe.future .project-image {
       background: white;
       background: url(img/projects/future/futureplan.jpg) no-repeat center center;
       background-size: 100%; }
-      .portfoliopage .stripe.future .project-image:hover {
+      .slide-on .stripe.future .project-image:hover {
         background-size: 120%; }
 
 .hider {
@@ -206,10 +245,34 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   background: white;
+  color: black;
   transition: all 1s;
   transition-delay: 0s; }
+  .aboutpage h2 {
+    color: black; }
   .aboutpage .padding {
     padding: 20px; }
+  .aboutpage .se-container {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 150px; }
+  .aboutpage .se-slope:nth-child(odd) {
+    background: #000;
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+    -ms-transform: rotate(5deg);
+    transform: rotate(5deg);
+    margin-top: -200px;
+    box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.4); }
+  .aboutpage .se-slope {
+    margin: 0 -50px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    -ms-transform-origin: left center;
+    transform-origin: left center; }
 
 .logo-out {
   position: fixed;
@@ -292,6 +355,12 @@ body {
         right: 50px;
         bottom: 50px;
         font-size: 20px; }
+      .logo-out .logo .contactcard .contactpic {
+        position: absolute;
+        left: 50px;
+        bottom: 50px;
+        width: 200px;
+        height: 200px; }
   .logo-out h3 {
     position: absolute;
     left: 0;
@@ -307,9 +376,12 @@ body {
   top: 30px;
   display: inline-block;
   margin: 0;
+  margin-left: 190px;
+  padding: 0;
   list-style-type: none;
   text-transform: uppercase;
   font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   z-index: 9; }
   .menu li {
@@ -324,7 +396,7 @@ body {
       color: white;
       text-decoration: none; }
 
-.selectedmenu, .home .menu li a.home, .portfolio .menu li a.portfolio, .about .menu li a.about, .contact .menu li a.contact {
+.selectedmenu, .home .menu li a.home, .portfolio .menu li a.portfolio, .graphic-design .menu li a.graphic-design, .photography .menu li a.photography, .life-drawing .menu li a.life-drawing, .about .menu li a.about, .contact .menu li a.contact {
   text-decoration: underline; }
 
 .portfolio .bg:after {
@@ -345,9 +417,40 @@ body {
     height: 150px;
     width: 150px;
     transition-delay: 0s; }
-.portfolio .portfoliopage .stripe {
+.portfolio .portfoliopage.slide-on .stripe {
   left: 0%;
   transition-delay: 1s; }
+
+.photography .photographypage.slide-on .stripe {
+  left: 0%;
+  transition-delay: 1s; }
+
+.graphic-design .graphic-designpage.slide-on .stripe {
+  left: 0%;
+  transition-delay: 1s; }
+
+.life-drawing .life-drawingpage.slide-on .stripe {
+  left: 0%;
+  transition-delay: 1s; }
+
+.photography .bg:after, .graphic-design .bg:after, .life-drawing .bg:after {
+  background: rgba(0, 0, 0, 0.75); }
+.photography .logo-out, .graphic-design .logo-out, .life-drawing .logo-out {
+  width: 150px;
+  height: 150px;
+  top: 30px;
+  left: 30px;
+  transition-delay: 0s; }
+  .photography .logo-out h3, .graphic-design .logo-out h3, .life-drawing .logo-out h3 {
+    left: 0;
+    font-size: 10px;
+    transition-delay: 0s; }
+  .photography .logo-out .logo, .graphic-design .logo-out .logo, .life-drawing .logo-out .logo {
+    top: 0;
+    left: 0;
+    height: 150px;
+    width: 150px;
+    transition-delay: 0s; }
 
 .about .aboutpage {
   top: calc(0% + 200px);
@@ -403,7 +506,7 @@ body {
     height: 300px;
     margin-bottom: 50px; }
   .contact .logo-out {
-    top: calc(00% + 150px);
+    top: calc(00% + 190px);
     width: 400px;
     height: 400px; }
     .contact .logo-out .logo .rightbracket {
@@ -417,6 +520,9 @@ body {
     .contact .logo-out .logo .contactcard {
       width: 100%;
       left: 0; }
+      .contact .logo-out .logo .contactcard .contactpic {
+        left: 100px;
+        opacity: 0.3; }
     .contact .logo-out:after {
       top: calc(100% - 400px);
       left: calc(100% - 600px);
