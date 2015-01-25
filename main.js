@@ -28,16 +28,10 @@ $(function () {
         $(this).parent().parent().parent().siblings().addClass("close");
     });
 
-    //////////////TESTING////////////////
-    //$(".menu li a").hover(
-    //    function () {
-    //    alert(currentpage);
-    //    }
-    //);
-    //$('.freetile').freetilediv({
-    //    animate: true,
-    //    elementDelay: 30
-    //});
+    //FANCYBOX PLUGIN
+    $(document).ready(function () {
+        $(".fancybox").fancybox();
+    });
 
 
 });
